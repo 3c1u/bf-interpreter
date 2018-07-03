@@ -8,7 +8,6 @@
 #define RET_SIZE  100
 #define BF_TOKENS "+-[]><.,"
 
-/* Maybeクラス */
 template <typename T>
 class Maybe {
 private:
@@ -47,8 +46,6 @@ Maybe<T> Nothing() {
   return o;
 }
 
-/* 抽象構文木（AST）の定義 */
-
 struct bf_code;
 struct bf_statement;
 
@@ -78,15 +75,6 @@ struct bf_code {
   bf_statement  stat;
 };
 
-bool lParen    (char c) { return c == '['; }
-bool rParen    (char c) { return c == ']'; }
-bool vplus     (char c) { return c == '+'; }
-bool vminus    (char c) { return c == '-'; }
-bool pplus     (char c) { return c == '>'; }
-bool pminus    (char c) { return c == '<'; }
-bool vprint    (char c) { return c == '.'; }
-bool vgetch    (char c) { return c == ','; }
-
 void releaseTree(bf_code *code) {
   if(code->stat.type == BF_LOOP)
     releaseTree(code->stat.code);
@@ -95,8 +83,6 @@ void releaseTree(bf_code *code) {
   if(code)
     free(code);
 }
-
-/* パーサーの定義 */
 
 struct ParserStream {
   const char *zero;
