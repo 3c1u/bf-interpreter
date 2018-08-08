@@ -3,6 +3,7 @@
 #include <string>
 #include <functional>
 #include <vector>
+#include <string.h>
 
 #define MEM_SIZE  30000
 #define RET_SIZE  100
